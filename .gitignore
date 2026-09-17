@@ -1,0 +1,8 @@
+*.pem
+*.key
+id_*
+*_rsa
+*_ed25519
+.env
+token*
+__pycache__/

@@ -1,4 +1,6 @@
 ﻿"""GPU 首次冒烟测试: 出一张图 + 打印所有待实测量。一次跑完, 不为看一个数字重开机。"""
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + '/..'))
 import paths, torch, json, os
 from PIL import Image
 from models.pipeline_orion_edit import OrionEditPipeline
@@ -46,4 +48,5 @@ print("peak GPU mem:", info["peak_mem_GB"], "GB")
 with open("results/smoke_info.json", "w") as f:
     json.dump(info, f, indent=2, default=str)
 print(json.dumps(info, indent=2, default=str))
+
 

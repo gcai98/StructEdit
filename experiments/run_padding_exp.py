@@ -1,5 +1,7 @@
 ﻿"""padding 实验: ref2 内容不变, 只改宽高比, 看两张 ref 的保真度如何变化。
 核心待验证: ref1 内容完全没动, 保真度是否也随 ref2 的 padding 下降。"""
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + '/..'))
 import paths, torch, json, os, sys
 from PIL import Image
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__) + "/.."))
@@ -55,4 +57,5 @@ print(f"{'prompt':>12} {'pad':>5} {'ref1面积':>8} {'ref1 DINO':>10} {'ref2 DIN
 for r in rows:
     print(f"{r['prompt']:>12} {r['pad']:>5} {r['ref1_area']:>8.4f} "
           f"{r['ref1_fid']['dino']:>10.4f} {r['ref2_fid']['dino']:>10.4f} {r['bg_psnr']:>8.2f}")
+
 

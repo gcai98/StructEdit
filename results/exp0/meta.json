@@ -1,0 +1,69 @@
+{
+  "canvas_order": "monkey_left_girl_right",
+  "prompts": {
+    "P1_monkey_left": "the monkey from Figure 1 on the left and the girl from Figure 1 on the right, walking on the sunset street in Figure 2, with their backs facing the camera, anime style.",
+    "P2_girl_left": "the girl from Figure 1 on the left and the monkey from Figure 1 on the right, walking on the sunset street in Figure 2, with their backs facing the camera, anime style."
+  },
+  "runs": [
+    {
+      "prompt": "P1_monkey_left",
+      "seed": 0,
+      "file": "P1_monkey_left_s0.png",
+      "verdict": ""
+    },
+    {
+      "prompt": "P1_monkey_left",
+      "seed": 1,
+      "file": "P1_monkey_left_s1.png",
+      "verdict": ""
+    },
+    {
+      "prompt": "P1_monkey_left",
+      "seed": 2,
+      "file": "P1_monkey_left_s2.png",
+      "verdict": ""
+    },
+    {
+      "prompt": "P1_monkey_left",
+      "seed": 3,
+      "file": "P1_monkey_left_s3.png",
+      "verdict": ""
+    },
+    {
+      "prompt": "P1_monkey_left",
+      "seed": 4,
+      "file": "P1_monkey_left_s4.png",
+      "verdict": ""
+    },
+    {
+      "prompt": "P2_girl_left",
+      "seed": 0,
+      "file": "P2_girl_left_s0.png",
+      "verdict": ""
+    },
+    {
+      "prompt": "P2_girl_left",
+      "seed": 1,
+      "file": "P2_girl_left_s1.png",
+      "verdict": ""
+    },
+    {
+      "prompt": "P2_girl_left",
+      "seed": 2,
+      "file": "P2_girl_left_s2.png",
+      "verdict": ""
+    },
+    {
+      "prompt": "P2_girl_left",
+      "seed": 3,
+      "file": "P2_girl_left_s3.png",
+      "verdict": ""
+    },
+    {
+      "prompt": "P2_girl_left",
+      "seed": 4,
+      "file": "P2_girl_left_s4.png",
+      "verdict": ""
+    }
+  ]
+}

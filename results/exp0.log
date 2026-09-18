@@ -7,3 +7,27 @@ libgomp: Invalid value for environment variable OMP_NUM_THREADS
 Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 46.59it/s]
 Loading pipeline components...:  17%|█▋        | 1/6 [00:00<00:01,  4.74it/s]Loading pipeline components...:  33%|███▎      | 2/6 [00:00<00:01,  2.20it/s]Loading pipeline components...:  67%|██████▋   | 4/6 [00:01<00:00,  4.47it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  5.94it/s]
 guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P1_monkey_left_s0.png saved
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P1_monkey_left_s1.png saved
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P1_monkey_left_s2.png saved
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P1_monkey_left_s3.png saved
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P1_monkey_left_s4.png saved
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P2_girl_left_s0.png saved
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P2_girl_left_s1.png saved
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P2_girl_left_s2.png saved
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P2_girl_left_s3.png saved
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+P2_girl_left_s4.png saved
+
+完成。10 张图在 /root/autodl-tmp/structedit/results/exp0
+判定: 看每张图左边是猴还是女孩, 填 meta.json 的 verdict 字段
+  P1 组: 猴在左 = follow
+  P2 组: 女孩在左 = follow, 猴在左 = violate

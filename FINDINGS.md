@@ -63,7 +63,23 @@ resolution=1024, bf16, 8bit adam, gradient_checkpointing, offload=True
 Python 3.12.3 (yml 要 3.10) —— venv 复用镜像自带 python
 torch 2.9.0+cu128 / torchvision 0.24.0+cu128  ✓
 transformers 4.57.1 ✓ / peft 0.17.1 ✓ / accelerate 1.11.0 ✓
-diffusers: yml 要 0.36.0.dev0 (PyPI 无), 实装 <填实际版本>
+diffusers: yml 要 0.36.0.dev0 (PyPI 无), 实装 0.36.0 (正式版)
 huggingface_hub 必须锁 0.36.0 —— diffusers>=0.40 会强升到 1.x, 与 transformers 4.57.1 冲突
 numpy 2.5.2 (yml 2.2.6), pillow 12.3.0 (yml 12.0.0) —— 由 torchvision 拉取, 未降级
 锁文件: structedit/requirements.lock.txt
+
+## 11. 官方样例数据点 (2026-09-18, 无卡模式算出)
+example3: ref1/ref2 均 576x1024, source 1024x768, output 1184x896
+  -> canvas boxes [(80,0,512,768), (512,0,944,768)], 面积占比 0.422 / 0.422 (均衡)
+example4: ref1/ref2 均 576x1024, 无 source (fusion 任务)
+=> 官方双 ref 样例均用等尺寸 ref, 看不到容量不均衡; 第 4 条必须自建失配输入验证
+=> example3 中 strip(1152x1024) 贴进 canvas(1024x768) 后左右各 80px 黑边,
+   纯黑占 canvas 约 15.6%, 同样进入 ref 分支成为无效 token
+=> output(1184,896) != source(1024,768), 证实 pipeline 内部 calculate_dimensions 重对齐,
+   坐标映射必须以运行时 vae_image_sizes 为准, 不能用原图尺寸
+
+## 12. 代码组织约定
+- OrionEdit clone 保持原样, 一个字符不改 (baseline 可验证性)
+- 所有改动在 StructEdit repo 内, 通过 monkey patch 替换 T._apply_orion_information_flow_mask
+- paths.py 负责 sys.path 注入, 本地/服务器自动适配
+- 本地是唯一编辑源, 服务器只 git pull 后运行

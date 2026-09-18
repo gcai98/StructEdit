@@ -27,17 +27,13 @@ _pack_latents (L493-496): 2x2 patchify, 行优先 flatten, t = row*w_p + col
 实现: ref_slices.py
 预计改动量: 50-80 行, 全在已有 hook 点, 不碰主干不碰训练。
 
-## 4. 容量不均衡 (第二缺陷, 与绑定独立)
-ref_slices.py 输出, canvas=(1344,768), 网格 84x48=4032 tokens:
-| refs                  | 占比           |
-|-----------------------|----------------|
-| (512,768),(640,640)   | 0.381 / 0.397  |
-| (512,512) x3          | 0.194 x3       |
-| (768,1024),(512,512)  | 0.429 / 0.143  |  <- 3x 差距
-每张 ref 分到的 token 数是其**原始宽高比**的函数, 与任务重要性无关。
-验证实验 (便宜, 不改代码): 同一对 ref, 只改其中一张的 padding 比例 (内容不变),
-测 identity fidelity 变化。若显著, 即得到纯架构导致、与语义无关的失败模式。
-=> 一个机制 (显式化 per-ref token 区间) 同时修绑定和容量两个缺陷。
+## 4. 容量不均衡 (第二缺陷) —— 修正
+官方样例 example3/example4 均用等尺寸 ref (576x1024 x2), 占比 0.422/0.422, 均衡。
+=> 不能用官方样例作证据, 必须自建尺寸失配输入。
+=> 另注: example3 中 strip(1152x1024) 贴进 canvas(1024x768) 后左右各留 80px 黑边,
+   纯黑填充占 canvas 15.6%, 同样进入 ref 分支成为无效 token。
+=> output 尺寸 (1184,896) != source (1024,768), 证实 pipeline 内部有 calculate_dimensions
+   重对齐, 坐标映射必须以运行时 vae_image_sizes 为准。
 
 ## 5. 复现计划变更 (重要)
 repo 无 eval 脚本 / 无 metric 实现 / 无 test split (ls -R 确认, 只有
@@ -62,3 +58,12 @@ resolution=1024, bf16, 8bit adam, gradient_checkpointing, offload=True
 - turbo 代理和 pip/apt 镜像互斥, 装包前要 unset proxy
 - 数据盘 100G; 底模 57.7G + OrionEditBench 50G 装不下, bench 要边下边解包边删 tar
 - 底模无冗余文件可排除 (transformer 5 片 40G + text_encoder 4 片 16.6G + vae 0.25G)
+
+## 9. 环境实际版本 (与 yml 的偏差)
+Python 3.12.3 (yml 要 3.10) —— venv 复用镜像自带 python
+torch 2.9.0+cu128 / torchvision 0.24.0+cu128  ✓
+transformers 4.57.1 ✓ / peft 0.17.1 ✓ / accelerate 1.11.0 ✓
+diffusers: yml 要 0.36.0.dev0 (PyPI 无), 实装 <填实际版本>
+huggingface_hub 必须锁 0.36.0 —— diffusers>=0.40 会强升到 1.x, 与 transformers 4.57.1 冲突
+numpy 2.5.2 (yml 2.2.6), pillow 12.3.0 (yml 12.0.0) —— 由 torchvision 拉取, 未降级
+锁文件: structedit/requirements.lock.txt

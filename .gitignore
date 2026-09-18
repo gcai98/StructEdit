@@ -6,3 +6,9 @@ id_*
 .env
 token*
 __pycache__/
+*.png
+*.jpg
+*.safetensors
+*.ckpt
+logs/
+__pycache__/

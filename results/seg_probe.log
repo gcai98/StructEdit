@@ -1,0 +1,18 @@
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+ref sizes: [(576, 1024), (576, 1024)] src: (1024, 768)
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 5/5 [00:00<00:00, 53.09it/s]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  17%|█▋        | 1/6 [00:00<00:03,  1.63it/s]Loading pipeline components...:  83%|████████▎ | 5/6 [00:00<00:00,  7.85it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 41.18it/s]
+Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00,  6.40it/s]
+/root/orionedit-venv/lib/python3.12/site-packages/diffusers/schedulers/scheduling_flow_match_euler_discrete.py:246: RuntimeWarning: invalid value encountered in divide
+  stretched_t = 1 - (one_minus_z / scale_factor)
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+vae_scale_factor = 8
+=== build_image_stream_slices ===
+L_syn=4144 L_ref=4144 L_src=4144 offset=0
+slices: {'syn': (0, 4144), 'ref': (4144, 8288), 'src': (8288, 12432)}
+/root/orionedit-venv/lib/python3.12/site-packages/diffusers/image_processor.py:148: RuntimeWarning: invalid value encountered in cast
+  images = (images * 255).round().astype("uint8")
+saved results/seg_probe.json

@@ -166,3 +166,17 @@ ref1 原图是正面站姿, 输出要求背影 -> **DINO 全图相似度主要�
 **尚无已验证的失败模式。下一步应直接做 binding 实验:
   两个相似角色 + 两张 ref, 看 identity 是否搞反。
   该实验不依赖连续指标, 肉眼可判, 且是核心假设。**
+
+## 20. seg 运行时实测 (2026-09-18)
+build_image_stream_slices 在 transformer_orion.py:677 (不在 pipeline_tools)
+example3 输入 (ref 576x1024 x2, src 1024x768):
+  L_syn = L_ref = L_src = 4144
+  slices: syn (0,4144) ref (4144,8288) src (8288,12432)
+**4144 = 74 x 56** -> latent 网格 74x56, 对应 1184x896 (= smoke 输出尺寸)
+
+=> 修正第 3/15 条: 网格不能用 原图尺寸//16 推算。
+   calculate_dimensions(VAE_IMAGE_SIZE, ar) 把所有图重采样到统一像素预算,
+   保持宽高比。ref_slices.py 的 grid_w/grid_h 必须从运行时取, 不能内部算。
+=> per-ref token 区间: ref 段 [4144, 8288), 网格 74x56, 行优先。
+   猴 ≈ 列 0-36, 女孩 ≈ 列 37-73, 再按 paste_x 和黑边裁边缘。
+   实验 2 的 mask 坐标基础已具备。

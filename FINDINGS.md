@@ -121,3 +121,48 @@ ref1: 猴子道士(正面站立持杖), ref2: 白袍女孩(正面站立)
 => 疑似 structure-appearance conflict 的实例: 输出应为 source_pose + ref_identity,
    实际是 ref_pose + ref_identity, source 的结构信息未被吸收
 => 待确认: 差异是否来自 prompt 措辞 (官方 example3 prompt 未公开)
+
+## 17. padding 实验结论: 假设被证伪 (2026-09-18, 5 seeds x 4 pad)
+官方 prompt, 每格 5 个 seed, DINO 全图相似度:
+| pad  | ref1 面积 | ref1 DINO 均值 | 标准差 | ref2 DINO 均值 |
+|------|----------|---------------|--------|---------------|
+| 0.0  | 0.4219   | 0.2444        | 0.0445 | 0.2541        |
+| 0.25 | 0.1875   | 0.2059        | 0.0649 | 0.2873        |
+| 0.5  | 0.1055   | 0.2108        | 0.0783 | 0.2933        |
+| 1.0  | 0.0469   | 0.2246        | 0.0811 | 0.3259        |
+
+**均值变动幅度 0.039 < 标准差 0.044-0.081, 且不单调。**
+结论: padding 造成的 token 容量缩水 (0.42 -> 0.047, 9倍) 对 ref 保真度
+**没有可检出的影响**。第 4 条作为失败模式不成立 (作为架构事实仍成立)。
+
+注: n=1 那轮 A 组呈现 0.66->0.56 的完美单调, 是偶然。
+    事先定死判读标准 (>0.05 才算信号 + 需多 seed 验证) 避免了误判。
+
+## 18. 评测指标失效 (必须先解决)
+同一对图, n=1 轮 ref1 DINO=0.66, 5-seed 轮只有 0.24, 唯一区别是 prompt:
+- n=1: "replace the character in Figure 3 with the character in Figure 1" (无姿态约束)
+- 5-seed: 官方 prompt, 含 "with their backs facing the camera"
+ref1 原图是正面站姿, 输出要求背影 -> **DINO 全图相似度主要在测姿态, 不是 identity**。
+
+=> DINO 全图余弦相似度不适用于本任务。候选替代:
+   (a) 先检测/裁剪输出中角色所在区域再比对
+   (b) 换用对姿态鲁棒的 identity 特征
+   (c) 以官方 output 为参照系, 测与其的差距
+   (d) 对 identity 错配这类离散失败, 直接用人工标注/GPT-4V 判定, 不用连续指标
+指标未定之前, 不再跑连续指标类实验。
+
+## 19. 当前结论可靠性排序
+确凿 (代码/文档级证据, 无需实验):
+  - 指令层面无 per-reference 可寻址性 (第16条)
+  - information-flow mask 不覆盖 syn->ref 方向 (第1条)
+  - 坐标链可解析, vae_scale_factor=8 / grid divisor=16 (第15条实测)
+成立但模型不敏感:
+  - 容量不均衡与耦合 (第14条的机制成立, 第17条证明无行为影响)
+已证伪:
+  - padding 导致保真度下降 (第17条)
+已降级:
+  - structure-appearance conflict (第15条, 系 prompt 缺姿态约束所致)
+
+**尚无已验证的失败模式。下一步应直接做 binding 实验:
+  两个相似角色 + 两张 ref, 看 identity 是否搞反。
+  该实验不依赖连续指标, 肉眼可判, 且是核心假设。**

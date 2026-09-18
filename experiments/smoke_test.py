@@ -18,6 +18,9 @@ pipe = paths.load_orion_pipeline(dtype=torch.bfloat16, device=torch.device("cuda
 
 info["vae_scale_factor"] = int(pipe.vae_scale_factor)
 info["latent_channels"] = int(getattr(pipe, "latent_channels", -1))
+pipe.vae.enable_tiling()
+pipe.vae.enable_slicing()
+print("vae tiling/slicing enabled")
 print("vae_scale_factor =", info["vae_scale_factor"])
 print("latent_channels  =", info["latent_channels"])
 print("patch grid divisor (vae_scale_factor*2) =", info["vae_scale_factor"] * 2)
@@ -48,5 +51,6 @@ print("peak GPU mem:", info["peak_mem_GB"], "GB")
 with open("results/smoke_info.json", "w") as f:
     json.dump(info, f, indent=2, default=str)
 print(json.dumps(info, indent=2, default=str))
+
 
 

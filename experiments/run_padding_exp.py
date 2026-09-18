@@ -24,6 +24,8 @@ PROMPTS = {
 }
 
 pipe = paths.load_orion_pipeline(dtype=torch.bfloat16, device=torch.device("cuda"))
+pipe.vae.enable_tiling()
+pipe.vae.enable_slicing()
 print("vae_scale_factor =", pipe.vae_scale_factor)
 
 fid = RefFidelity(device="cuda")
@@ -57,5 +59,6 @@ print(f"{'prompt':>12} {'pad':>5} {'ref1面积':>8} {'ref1 DINO':>10} {'ref2 DIN
 for r in rows:
     print(f"{r['prompt']:>12} {r['pad']:>5} {r['ref1_area']:>8.4f} "
           f"{r['ref1_fid']['dino']:>10.4f} {r['ref2_fid']['dino']:>10.4f} {r['bg_psnr']:>8.2f}")
+
 
 

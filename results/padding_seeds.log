@@ -1,0 +1,56 @@
+nohup: ignoring input
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 5/5 [00:00<00:00, 53.71it/s]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 48.90it/s]
+Loading pipeline components...:  17%|█▋        | 1/6 [00:00<00:00,  7.34it/s]Loading pipeline components...:  50%|█████     | 3/6 [00:00<00:00, 10.10it/s]Loading pipeline components...:  83%|████████▎ | 5/6 [00:00<00:00,  4.77it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00,  6.40it/s]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 0, "pad": 0.0, "ref1_area": 0.4219, "ref1_dino": 0.2951042056083679, "ref2_dino": 0.2523523271083832, "bg_psnr": 14.413778121965636}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 0, "pad": 0.25, "ref1_area": 0.1875, "ref1_dino": 0.30252715945243835, "ref2_dino": 0.30141860246658325, "bg_psnr": 14.497202293352355}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 0, "pad": 0.5, "ref1_area": 0.1055, "ref1_dino": 0.3492502272129059, "ref2_dino": 0.29709896445274353, "bg_psnr": 14.37126537002509}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 0, "pad": 1.0, "ref1_area": 0.0469, "ref1_dino": 0.33603864908218384, "ref2_dino": 0.24788250029087067, "bg_psnr": 14.248592457999331}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 1, "pad": 0.0, "ref1_area": 0.4219, "ref1_dino": 0.26717421412467957, "ref2_dino": 0.2670286297798157, "bg_psnr": 14.166958390756454}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 1, "pad": 0.25, "ref1_area": 0.1875, "ref1_dino": 0.23928304016590118, "ref2_dino": 0.25488173961639404, "bg_psnr": 15.092805106004842}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 1, "pad": 0.5, "ref1_area": 0.1055, "ref1_dino": 0.19253700971603394, "ref2_dino": 0.23115305602550507, "bg_psnr": 15.251884814538068}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 1, "pad": 1.0, "ref1_area": 0.0469, "ref1_dino": 0.19215510785579681, "ref2_dino": 0.38438284397125244, "bg_psnr": 13.88374927533328}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 2, "pad": 0.0, "ref1_area": 0.4219, "ref1_dino": 0.16237957775592804, "ref2_dino": 0.24346669018268585, "bg_psnr": 16.154615268156252}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 2, "pad": 0.25, "ref1_area": 0.1875, "ref1_dino": 0.10718649625778198, "ref2_dino": 0.30771690607070923, "bg_psnr": 18.791064452928804}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 2, "pad": 0.5, "ref1_area": 0.1055, "ref1_dino": 0.12317634373903275, "ref2_dino": 0.3676421046257019, "bg_psnr": 18.367873978866832}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 2, "pad": 1.0, "ref1_area": 0.0469, "ref1_dino": 0.13828817009925842, "ref2_dino": 0.34060853719711304, "bg_psnr": 18.52989958022691}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 3, "pad": 0.0, "ref1_area": 0.4219, "ref1_dino": 0.2440120279788971, "ref2_dino": 0.19839754700660706, "bg_psnr": 16.75799847889058}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 3, "pad": 0.25, "ref1_area": 0.1875, "ref1_dino": 0.20420753955841064, "ref2_dino": 0.2424824982881546, "bg_psnr": 16.276130098416793}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 3, "pad": 0.5, "ref1_area": 0.1055, "ref1_dino": 0.15631213784217834, "ref2_dino": 0.21115292608737946, "bg_psnr": 17.094695054467888}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 3, "pad": 1.0, "ref1_area": 0.0469, "ref1_dino": 0.1511843055486679, "ref2_dino": 0.23482558131217957, "bg_psnr": 16.57430979573656}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 4, "pad": 0.0, "ref1_area": 0.4219, "ref1_dino": 0.2535055875778198, "ref2_dino": 0.30915936827659607, "bg_psnr": 16.739172356771867}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 4, "pad": 0.25, "ref1_area": 0.1875, "ref1_dino": 0.17651110887527466, "ref2_dino": 0.33005690574645996, "bg_psnr": 17.873744198714338}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 4, "pad": 0.5, "ref1_area": 0.1055, "ref1_dino": 0.23289228975772858, "ref2_dino": 0.35946038365364075, "bg_psnr": 17.561902710614692}
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+{"seed": 4, "pad": 1.0, "ref1_area": 0.0469, "ref1_dino": 0.30555814504623413, "ref2_dino": 0.42185336351394653, "bg_psnr": 15.760342433109244}
+
+=== mean over seeds ===
+pad=0.0   ref1 0.2444 +-0.0445  ref2 0.2541  (n=5)
+pad=0.25  ref1 0.2059 +-0.0649  ref2 0.2873  (n=5)
+pad=0.5   ref1 0.2108 +-0.0783  ref2 0.2933  (n=5)
+pad=1.0   ref1 0.2246 +-0.0811  ref2 0.3259  (n=5)

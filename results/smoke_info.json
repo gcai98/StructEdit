@@ -1,0 +1,24 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "vae_scale_factor": 8,
+  "latent_channels": 16,
+  "ref_sizes": [
+    [
+      576,
+      1024
+    ],
+    [
+      576,
+      1024
+    ]
+  ],
+  "src_size": [
+    1024,
+    768
+  ],
+  "out_size": [
+    1184,
+    896
+  ],
+  "peak_mem_GB": 44.95
+}

@@ -104,3 +104,20 @@ strip_h = max(h for w,h in refs) -> 任意一张 ref 变高会把整条 strip �
    A: "replace the character in Figure 3 with the character in Figure 1."  (ref2 是干扰项)
    B: 双角色替换, 两张 ref 都参与
    若 prompt_A 下 padding ref2 仍影响输出, 证据最强。
+
+## 15. smoke test 结果 (2026-09-18, RTX 4090 49GB)
+vae_scale_factor = 8, latent_channels = 16, patch grid divisor = 16
+  -> ref_slices.py 的 //16 假设**已验证**
+out_size (1184,896) != src (1024,768), 内部 calculate_dimensions 重对齐确认
+peak GPU mem 44.95 GB / 48 GB -> 4090 是推理下限, 无余量; 训练必须换 A800-80GB
+VAE decode 需 enable_tiling()+enable_slicing(), 否则最后一步 OOM (需 5.12GB 连续分配)
+
+### 与官方 output 的定性差异 (example3, 我们的 prompt 未必与官方一致)
+source: 单个背对镜头的皮卡丘, 路左侧
+ref1: 猴子道士(正面站立持杖), ref2: 白袍女孩(正面站立)
+官方 output: 两角色背影并排走, 姿态适配 source, 有地面阴影, ref 脸部简化
+我们的 output: 两角色正面站立, **照搬 ref 原始姿态**, 无地面阴影,
+              右下角残留皮卡丘黄色块
+=> 疑似 structure-appearance conflict 的实例: 输出应为 source_pose + ref_identity,
+   实际是 ref_pose + ref_identity, source 的结构信息未被吸收
+=> 待确认: 差异是否来自 prompt 措辞 (官方 example3 prompt 未公开)

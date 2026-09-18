@@ -1,0 +1,38 @@
+nohup: ignoring input
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  40%|████      | 2/5 [00:00<00:00, 11.11it/s]Loading checkpoint shards:  80%|████████  | 4/5 [00:00<00:00, 11.80it/s]Loading checkpoint shards: 100%|██████████| 5/5 [00:00<00:00, 14.09it/s]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 48.90it/s]
+Loading pipeline components...:  33%|███▎      | 2/6 [00:00<00:00,  9.11it/s]Loading pipeline components...:  50%|█████     | 3/6 [00:00<00:00,  3.05it/s]Loading pipeline components...:  83%|████████▎ | 5/6 [00:01<00:00,  5.11it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  5.75it/s]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+vae_scale_factor = 8
+A_ref1_only_pad0.0 {"dino": 0.6613308191299438, "clip": 0.8037556409835815} {"dino": 0.3665357530117035, "clip": 0.5183690786361694} bgPSNR=15.63
+A_ref1_only_pad0.25 {"dino": 0.626575231552124, "clip": 0.7855302095413208} {"dino": 0.3057249188423157, "clip": 0.4980272054672241} bgPSNR=15.34
+A_ref1_only_pad0.5 {"dino": 0.6024430990219116, "clip": 0.771247148513794} {"dino": 0.3378164768218994, "clip": 0.4850215017795563} bgPSNR=15.30
+A_ref1_only_pad1.0 {"dino": 0.5570273995399475, "clip": 0.7611875534057617} {"dino": 0.31718599796295166, "clip": 0.47539424896240234} bgPSNR=15.18
+B_both_pad0.0 {"dino": 0.5677920579910278, "clip": 0.6560137271881104} {"dino": 0.5125209093093872, "clip": 0.5579983592033386} bgPSNR=16.50
+B_both_pad0.25 {"dino": 0.5942165851593018, "clip": 0.6599372625350952} {"dino": 0.5656067132949829, "clip": 0.5610011219978333} bgPSNR=16.69
+B_both_pad0.5 {"dino": 0.5932080149650574, "clip": 0.6650541424751282} {"dino": 0.5168598890304565, "clip": 0.5685817003250122} bgPSNR=16.63
+B_both_pad1.0 {"dino": 0.5741544961929321, "clip": 0.6915062665939331} {"dino": 0.5215736627578735, "clip": 0.5927296876907349} bgPSNR=17.21
+
+=== 汇总 ===
+      prompt   pad   ref1面积  ref1 DINO  ref2 DINO   bgPSNR
+ A_ref1_only   0.0   0.4219     0.6613     0.3665    15.63
+ A_ref1_only  0.25   0.1875     0.6266     0.3057    15.34
+ A_ref1_only   0.5   0.1055     0.6024     0.3378    15.30
+ A_ref1_only   1.0   0.0469     0.5570     0.3172    15.18
+      B_both   0.0   0.4219     0.5678     0.5125    16.50
+      B_both  0.25   0.1875     0.5942     0.5656    16.69
+      B_both   0.5   0.1055     0.5932     0.5169    16.63
+      B_both   1.0   0.0469     0.5742     0.5216    17.21

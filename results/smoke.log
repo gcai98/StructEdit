@@ -1,0 +1,45 @@
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+=== env ===
+torch 2.9.0+cu128 cuda 12.8 True
+device NVIDIA GeForce RTX 4090
+=== loading pipeline ===
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 5/5 [00:00<00:00, 52.21it/s]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  50%|█████     | 3/6 [00:00<00:00,  4.40it/s]`torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 46.98it/s]
+Loading pipeline components...:  67%|██████▋   | 4/6 [00:00<00:00,  5.02it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00,  6.84it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00,  6.00it/s]
+guidance_scale is passed as 1.0, but ignored since the model is not guidance-distilled.
+vae tiling/slicing enabled
+vae_scale_factor = 8
+latent_channels  = 16
+patch grid divisor (vae_scale_factor*2) = 16
+ref sizes [(576, 1024), (576, 1024)] src (1024, 768)
+=== generating ===
+saved results/smoke_example3.png (1184, 896)
+peak GPU mem: 44.95 GB
+{
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "vae_scale_factor": 8,
+  "latent_channels": 16,
+  "ref_sizes": [
+    [
+      576,
+      1024
+    ],
+    [
+      576,
+      1024
+    ]
+  ],
+  "src_size": [
+    1024,
+    768
+  ],
+  "out_size": [
+    1184,
+    896
+  ],
+  "peak_mem_GB": 44.95
+}
+[W918 19:54:19.816989516 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

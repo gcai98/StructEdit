@@ -12,13 +12,7 @@ print("device", torch.cuda.get_device_name(0))
 info["gpu"] = torch.cuda.get_device_name(0)
 
 print("=== loading pipeline ===")
-pipe = OrionEditPipeline.from_orion_pretrained(
-    base_model=paths.WEIGHTS_BASE,
-    orion_repo=paths.WEIGHTS_LORA,
-    torch_dtype=torch.bfloat16,
-    device=torch.device("cuda"),
-)
-pipe = pipe.to(dtype=torch.bfloat16)
+pipe = paths.load_orion_pipeline(dtype=torch.bfloat16, device=torch.device("cuda"))
 
 info["vae_scale_factor"] = int(pipe.vae_scale_factor)
 info["latent_channels"] = int(getattr(pipe, "latent_channels", -1))
@@ -52,3 +46,4 @@ print("peak GPU mem:", info["peak_mem_GB"], "GB")
 with open("results/smoke_info.json", "w") as f:
     json.dump(info, f, indent=2, default=str)
 print(json.dumps(info, indent=2, default=str))
+

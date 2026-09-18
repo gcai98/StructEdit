@@ -1,0 +1,118 @@
+{
+  "source": "example3",
+  "ref1": "ref1.png",
+  "cases": [
+    {
+      "pad": 0.0,
+      "ref2_file": "ref2_pad0.0.png",
+      "ref2_size": [
+        576,
+        1024
+      ],
+      "canvas_boxes": [
+        [
+          80.0,
+          0,
+          512.0,
+          768.0
+        ],
+        [
+          512.0,
+          0,
+          944.0,
+          768.0
+        ]
+      ],
+      "area_frac": [
+        0.4219,
+        0.4219
+      ],
+      "ref2_content_frac_of_own_box": 1.0,
+      "ref2_effective_area": 0.4219
+    },
+    {
+      "pad": 0.25,
+      "ref2_file": "ref2_pad0.25.png",
+      "ref2_size": [
+        576,
+        1536
+      ],
+      "canvas_boxes": [
+        [
+          224.0,
+          0,
+          512.0,
+          512.0
+        ],
+        [
+          512.0,
+          0,
+          800.0,
+          768.0
+        ]
+      ],
+      "area_frac": [
+        0.1875,
+        0.2812
+      ],
+      "ref2_content_frac_of_own_box": 0.6667,
+      "ref2_effective_area": 0.1875
+    },
+    {
+      "pad": 0.5,
+      "ref2_file": "ref2_pad0.5.png",
+      "ref2_size": [
+        576,
+        2048
+      ],
+      "canvas_boxes": [
+        [
+          296.0,
+          0,
+          512.0,
+          384.0
+        ],
+        [
+          512.0,
+          0,
+          728.0,
+          768.0
+        ]
+      ],
+      "area_frac": [
+        0.1055,
+        0.2109
+      ],
+      "ref2_content_frac_of_own_box": 0.5,
+      "ref2_effective_area": 0.1055
+    },
+    {
+      "pad": 1.0,
+      "ref2_file": "ref2_pad1.0.png",
+      "ref2_size": [
+        576,
+        3072
+      ],
+      "canvas_boxes": [
+        [
+          368.0,
+          0,
+          512.0,
+          256.0
+        ],
+        [
+          512.0,
+          0,
+          656.0,
+          768.0
+        ]
+      ],
+      "area_frac": [
+        0.0469,
+        0.1406
+      ],
+      "ref2_content_frac_of_own_box": 0.3333,
+      "ref2_effective_area": 0.0469
+    }
+  ]
+}

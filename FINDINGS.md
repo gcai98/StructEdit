@@ -83,3 +83,24 @@ example4: ref1/ref2 均 576x1024, 无 source (fusion 任务)
 - 所有改动在 StructEdit repo 内, 通过 monkey patch 替换 T._apply_orion_information_flow_mask
 - paths.py 负责 sys.path 注入, 本地/服务器自动适配
 - 本地是唯一编辑源, 服务器只 git pull 后运行
+
+## 14. padding 实验的理论预测 (2026-09-18, 尚未上机验证)
+控制变量: ref2 像素内容不变, 仅在上下加黑边改变其宽高比。
+| pad | ref2尺寸    | ref1占比 | ref2占比 | ref2有效 |
+|-----|------------|---------|---------|---------|
+| 0.0 | 576x1024   | 0.4219  | 0.4219  | 0.4219  |
+| 0.25| 576x1536   | 0.1875  | 0.2812  | 0.1875  |
+| 0.5 | 576x2048   | 0.1055  | 0.2109  | 0.1055  |
+| 1.0 | 576x3072   | 0.0469  | 0.1406  | 0.0469  |
+
+**核心发现: 容量是耦合的, 不是各自独立的。**
+strip_h = max(h for w,h in refs) -> 任意一张 ref 变高会把整条 strip 拉高,
+等比缩放后所有 ref 一起缩小。ref1 内容未动, 容量却从 0.4219 降到 0.0469 (1/9)。
+
+=> 待验证的两个现象:
+   (a) ref2 保真度随 pad 下降 (预期)
+   (b) **ref1 保真度也随 pad 下降** (反直觉, 无法用语义解释, 只能归因于架构)
+=> 实验要跑两组 prompt:
+   A: "replace the character in Figure 3 with the character in Figure 1."  (ref2 是干扰项)
+   B: 双角色替换, 两张 ref 都参与
+   若 prompt_A 下 padding ref2 仍影响输出, 证据最强。

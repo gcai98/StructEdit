@@ -19,8 +19,10 @@ src = Image.open(f"{D}/source.png").convert("RGB")
 ref2_orig = Image.open(f"{D}/ref2_pad0.0.png").convert("RGB")
 
 PROMPTS = {
-    "A_ref1_only": "replace the character in Figure 3 with the character in Figure 1.",
-    "B_both": "replace the two characters in Figure 3 with the characters in Figure 1 and Figure 2.",
+    # 官方 README 的 example3 prompt: Figure 1 = 合成后的 ref canvas, Figure 2 = source
+    "official": "characters in Figure 1 walking on the sunset street in Figure 2, with their backs facing the camera, anime style.",
+    # 只点名一个角色, 另一个是干扰项
+    "ref1_only": "the character on the left of Figure 1 walking on the sunset street in Figure 2, with their back facing the camera, anime style.",
 }
 
 pipe = paths.load_orion_pipeline(dtype=torch.bfloat16, device=torch.device("cuda"))
@@ -59,6 +61,7 @@ print(f"{'prompt':>12} {'pad':>5} {'ref1面积':>8} {'ref1 DINO':>10} {'ref2 DIN
 for r in rows:
     print(f"{r['prompt']:>12} {r['pad']:>5} {r['ref1_area']:>8.4f} "
           f"{r['ref1_fid']['dino']:>10.4f} {r['ref2_fid']['dino']:>10.4f} {r['bg_psnr']:>8.2f}")
+
 
 
 
